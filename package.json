@@ -44,7 +44,7 @@
     "download-language-names": "node scripts/download-language-names.js",
     "change-password": "node scripts/change-password.js",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
-    "postbuild": "node scripts/postbuild.js",
+    "postbuild": "node scripts/postbuild.js && cp -r public .next/standalone/public && cp -r .next/static .next/standalone/.next/static && cp -r geo .next/standalone/geo && node -e \"const fs=require('fs');const p=JSON.parse(fs.readFileSync('.next/standalone/package.json','utf8'));p.scripts={start:'node server.js'};fs.writeFileSync('.next/standalone/package.json',JSON.stringify(p))\"",
     "test": "jest",
     "cypress-open": "cypress open cypress run",
     "cypress-run": "cypress run cypress run",
