@@ -12,7 +12,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 3001 --turbo",
-    "prebuild": "find node_modules -path '*/@esbuild/linux-x64/bin/esbuild' -exec chmod +x {} \\; 2>/dev/null || true",
+    "prebuild": "chmod +x node_modules/.pnpm/@prisma+engines@*/node_modules/@prisma/engines/* 2>/dev/null; find node_modules -path '*/@esbuild/linux-x64/bin/esbuild' -exec
+   chmod +x {} \\; 2>/dev/null || true",
     "build": "npm-run-all check-env build-db check-db build-tracker build-geo build-app",
     "start": "next start",
     "build-docker": "npm-run-all build-db build-tracker build-geo build-app",
